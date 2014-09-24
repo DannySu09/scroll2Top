@@ -4,7 +4,7 @@
     dir: './dist',
     modules: [
         {
-            name: 'main'
+            name: 'build'
         }
     ]
 })

@@ -1,1 +1,0 @@
-define([],function(){return function(e,t){return t===undefined?e.scrollY?e.scrollY:e.scrollTop:t<=0?(e.scrollTo?e.scrollTo(0,0):e.scrollTop=0,0):(e.scrollTo?e.scrollTo(0,t):e.scrollTop=t,t)}});

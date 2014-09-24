@@ -1,1 +1,0 @@
-define([],function(){return function(e,t,n,r){var i,s,o=Math.PI;switch(t){case"ease-in":i=Math.cos;break;case"ease-out":i=Math.sin;break;case"steady":return s=e;default:i=Math.cos}return s=e*i(o/2*(r-n)/r),s>20?s:20}});
