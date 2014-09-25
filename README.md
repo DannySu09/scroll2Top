@@ -1,13 +1,11 @@
 # 使用方法：
 
-引用模块`scroll2Top`，如：
+在绑定事件中运行scroll2Top，如：
 
 ```
-require(['script/scroll2Top'], function(scroll2Top){
-    var divBtn = document.getElementsByClassName('divBtn')[0];
-    divBtn.addEventListener('click', function(){
-        scroll2Top(box, 400, 'ease-in');
-    });
+var divBtn = document.getElementsByClassName('divBtn')[0];
+divBtn.addEventListener('click', function(){
+    scroll2Top(box, 400, 'ease-in');
 });
 ```
 
