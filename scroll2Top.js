@@ -37,7 +37,7 @@
             return;
         }
         if(typeof speed !== 'number') {
-            if(typeof speed === 'string' && speed.match(/ease|steady/).length !== 0) {
+            if(typeof speed === 'string' && speed.match(/ease-in|ease-out|steady/).length !== 0) {
                 style = speed
             }
             speed = 300;
@@ -57,6 +57,6 @@
         };
         operate();
     };
-    window.OE = window.OE && {};
+    window.OE = window.OE || {};
     window.OE.scroll2Top = scroll2Top;
 })();
