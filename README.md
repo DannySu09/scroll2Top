@@ -5,17 +5,16 @@
 ```
 var divBtn = document.getElementsByClassName('divBtn')[0];
 divBtn.addEventListener('click', function(){
-    scroll2Top(box, 400, 'ease-in');
+    scroll2Top(box, 1400);
 });
 ```
 
-# `scroll2Top`接受三个参数：
+# scroll2Top接受2个参数：
 
-* component(object): window对象，或者一个dom对象。
-* speed(number): 滚动速度。缺省/默认值300px每1000/60ms。
-* style(string)：滚动效果，目前支持三种，分别为：'steady'、'ease-in'、'ease-out'。缺省/默认值 'steady'。
+* component (object): window对象，或者一个dom对象，这个是**必传参数**。
+* time (number): 滚动到顶部的时间，单位是`ms`，默认值：1000ms。
 
 例子：
 ```
-scroll2Top('steady', 500, 'ease-out');
+scroll2Top(window, 1200);
 ```
