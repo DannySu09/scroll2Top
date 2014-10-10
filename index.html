@@ -5,7 +5,7 @@
     <title></title>
     <style>
         .papa {
-            height: 100px;
+            height: 600px;
             overflow: auto;
         }
         .son {
@@ -33,10 +33,10 @@
     var box = document.getElementsByClassName('papa')[0];
     var scroll2Top = OE.scroll2Top;
     divBtn.addEventListener('click', function(){
-        scroll2Top(box, 'ease-in');
+        scroll2Top(box, 500);
     });
     gBtn.addEventListener('click', function(){
-        scroll2Top(window, 300, 'ease-out');
+        scroll2Top(window, 700);
     });
 </script>
 </body>

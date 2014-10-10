@@ -1,4 +1,18 @@
 ;(function(){
+    var animate = (function(){
+        var action = window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.oRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
+            function (callback) {
+                window.setTimeout(callback, 1000 / 60);
+            };
+        return function(runner){
+            action.call(window, runner);
+        };
+    })();
+
     var scrollTop = function(component, nextStep){
         if(nextStep === undefined) {
             return component.scrollY ? component.scrollY : component.scrollTop;
@@ -11,52 +25,41 @@
         }
     };
 
-    var speedConduct = function(originSpeed, style, cur, total){
-        var method;
-        var resultSpeed;
-        var pi = Math.PI;
-        switch (style) {
-            case 'ease-in':
-                method = Math.cos;
-                break;
-            case 'ease-out':
-                method = Math.sin;
-                break;
-            case 'steady':
-                return resultSpeed = originSpeed;
-            default :
-                method = Math.cos;
-        }
-        resultSpeed = originSpeed * method((pi/2)*(total-cur)/total);
-        return resultSpeed > 20? resultSpeed : 20;
+    var speedConduct = function(originSpeed, time, cur, total){
+        var method = Math.sin;
+        var PI = Math.PI;
+        return originSpeed * method(PI * (total-cur)/total) + 1;
     };
 
-    var scroll2Top = function(component, speed, style){
-        if(component === undefined) {
+    var scroll2Top = function(component, time){
+        var DEFAULT_TIME = 1000;
+        if(component == null) {
             console.error('You must assign a dom node object or window object as the first param.');
             return;
         }
-        if(typeof speed !== 'number') {
-            if(typeof speed === 'string' && speed.match(/ease-in|ease-out|steady/).length !== 0) {
-                style = speed
-            }
-            speed = 300;
+        if(time == null) {
+            time = DEFAULT_TIME;
         }
-        if(style === undefined) {
-            style = 'steady';
-        }
+        console.log(time);
         var originY = scrollTop(component);
         var currentY = originY;
+        var originSpeed = originY / (time / 60);
         var currentSpeed;
-        var operate = function(){
-            currentSpeed = speedConduct(speed, style, currentY, originY);
+        (function operate(){
+            currentSpeed = speedConduct(originSpeed, time, currentY, originY);
             currentY -= currentSpeed;
             if(scrollTop(component, currentY) !== 0) {
-                setTimeout(operate, 1000/60);
+                animate(operate);
             }
-        };
-        operate();
+        })();
     };
-    window.OE = window.OE || {};
-    window.OE.scroll2Top = scroll2Top;
+
+    if(window.define != null) {
+        window.define(function(){
+            return scroll2Top;
+        });
+    } else {
+        window.OE = window.OE || {};
+        window.OE.scroll2Top = scroll2Top;
+    }
 })();
