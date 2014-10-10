@@ -40,7 +40,6 @@
         if(time == null) {
             time = DEFAULT_TIME;
         }
-        console.log(time);
         var originY = scrollTop(component);
         var currentY = originY;
         var originSpeed = originY / (time / 60);
