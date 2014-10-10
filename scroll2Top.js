@@ -58,7 +58,6 @@
             return scroll2Top;
         });
     } else {
-        window.OE = window.OE || {};
-        window.OE.scroll2Top = scroll2Top;
+        window.scroll2Top = scroll2Top;
     }
 })();
