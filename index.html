@@ -4,26 +4,10 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
-        .papa {
-            height: 600px;
-            overflow: auto;
-        }
-        .son {
-            height: 6000px;
-            background-color: #ccc;
-        }
-        body {
-            height: 6000px;
-        }
-        .globalBtn {
-            position: fixed;
-            bottom: 0;
-            right: 0;
-        }
+
     </style>
 </head>
 <body>
-<div class="papa"><div class="son"></div></div>
 <button class="divBtn">scroll div</button>
 <button class="globalBtn">scroll body</button>
 <script src="scroll2Top.js"></script>
@@ -31,7 +15,7 @@
     var divBtn = document.getElementsByClassName('divBtn')[0];
     var gBtn = document.getElementsByClassName('globalBtn')[0];
     var box = document.getElementsByClassName('papa')[0];
-    var scroll2Top = OE.scroll2Top;
+    var scroll2Top = scroll2Top;
     divBtn.addEventListener('click', function(){
         scroll2Top(box, 500);
     });
