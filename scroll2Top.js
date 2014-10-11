@@ -14,7 +14,7 @@
     })();
 
     var scrollTop = function(component, nextStep){
-        if(nextStep === undefined) {
+        if(nextStep == null) {
             return component.scrollY ? component.scrollY : component.scrollTop;
         } else if(nextStep <= 0) {
             component.scrollTo ? component.scrollTo(0, 0):component.scrollTop = 0;
