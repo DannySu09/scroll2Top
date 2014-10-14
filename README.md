@@ -3,11 +3,11 @@
 在绑定事件中运行scroll2Top，如：
 
 ```
-var divBtn = document.getElementsByClassName('divBtn')[0];
 divBtn.addEventListener('click', function(){
     scroll2Top(box, 1400);
 });
 ```
+上面的代码会将`box`中的内容滚至顶部。
 
 # scroll2Top接受2个参数：
 
