@@ -4,17 +4,101 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
+        body {
+            margin: 0;
+        }
+        .box {
+            height: 300px;
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .box-1 {
+            background-color: #85ccdf;
+        }
+        .box-2 {
+            position: relative;
+            background-color: #ff8737;
+        }
+        .box-3 {
+            background-color: #ee7496;
+        }
+        .box-4 {
+            background-color: #deb986;
+        }
+        .box-5 {
+            background-color: #c8acec;
+        }
+        .box-6 {
+            background-color: #96f472;
+        }
+        .innerBox {
+            height: 100%;
+            overflow: auto;
+        }
+        .btn {
+            width: 120px;
+            font-size: 20px;
+            color: #fff;
+            height: 60px;
+            border: 4px solid #fff;
+            border-radius: 6px;
+            background-color: transparent;
+            transition: width .3s;
+            -o-transition: width .3s;
+            -ms-transition: width .3s;
+            -moz-transition: width .3s;
+            -webkit-transition: width .3s;
+        }
+        .btn:hover {
+            width: 130px;
+        }
 
+        .divBtn {
+            position: absolute;
+            bottom: 5px;
+            left: 20px;
+        }
+        .globalBtn {
+            position: fixed;
+            right: 10px;
+            bottom: 30px;
+        }
     </style>
 </head>
 <body>
-<button class="divBtn">scroll div</button>
-<button class="globalBtn">scroll body</button>
+<div class="box box-1"></div>
+<div class="box box-2">
+    <div class="innerBox js-box">
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+        <p>content</p>
+    </div>
+    <button class="btn divBtn">to top</button>
+</div>
+<div class="box box-3"></div>
+<div class="box box-4"></div>
+<div class="box box-5"></div>
+<div class="box box-6"></div>
+<button class="btn globalBtn">to top</button>
 <script src="scroll2Top.js"></script>
 <script>
     var divBtn = document.getElementsByClassName('divBtn')[0];
     var gBtn = document.getElementsByClassName('globalBtn')[0];
-    var box = document.getElementsByClassName('papa')[0];
+    var box = document.getElementsByClassName('js-box')[0];
     var scroll2Top = scroll2Top;
     divBtn.addEventListener('click', function(){
         scroll2Top(box, 500);
