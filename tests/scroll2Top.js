@@ -1,4 +1,4 @@
-;(function(){
+;(function(exports){
 //    get the prefix or non-prefix raf
     var animate = (function(){
         var action = window.requestAnimationFrame ||
@@ -23,7 +23,7 @@
             return 0;
         } else {
             component.scrollTo ? component.scrollTo(0, nextStep) : component.scrollTop = nextStep;
-            return nextStep;
+            return Math.round(nextStep);
         }
     };
 
@@ -38,11 +38,11 @@
         return originSpeed * method(PI * (total-cur)/total) + INIT_SPEED;
     };
 
-    var scroll2Top = function(component, time){
+    var scroll2Top = function(component, time, spy){
         var DEFAULT_TIME = 1000;
         if(component == null) {
             console.error('You must assign a dom node object or window object as the first param.');
-            return;
+            return 'error';
         }
         if(time == null) {
             time = DEFAULT_TIME;
@@ -52,6 +52,9 @@
         var originSpeed = originY / (time / 60);
         var currentSpeed;
         (function operate(){
+            if(spy != null) {
+                spy();
+            }
             currentSpeed = speedConduct(originSpeed, currentY, originY);
             currentY -= currentSpeed;
             if(scrollTop(component, currentY) !== 0) {
@@ -67,4 +70,8 @@
     } else {
         window.scroll2Top = scroll2Top;
     }
-})();
+    exports.testScope = {};
+    exports.testScope.scrollTop = scrollTop;
+    exports.testScope.speedConduct = speedConduct;
+    exports.testScope.scroll2Top = scroll2Top;
+})(window);

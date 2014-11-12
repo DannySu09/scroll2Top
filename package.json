@@ -1,0 +1,30 @@
+{
+  "name": "scroll2Top",
+  "version": "1.0.0",
+  "description": "A light weight tool scrolling your page to the very top",
+  "main": "scroll2Top.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sunaiwen/scroll2Top.git"
+  },
+  "keywords": [
+    "scrollToTop"
+  ],
+  "author": "sunaiwen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sunaiwen/scroll2Top/issues"
+  },
+  "homepage": "https://github.com/sunaiwen/scroll2Top",
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.0.1",
+    "sinon": "^1.11.1"
+  }
+}
