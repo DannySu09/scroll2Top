@@ -41,15 +41,14 @@ describe('Scroll2Top', function(){
             window.testScope.scroll2Top(testBlock, 1200, spy);
             expect(spy.callCount).to.equal(1);
         });
-        it('should execute more than one time when Y coordinate is not 0.', function(){
-            var callCount = 0;
-            var spy = function(){
-                callCount += 1;
-                console.log(callCount);
-            };
+        it('should execute more than one time when Y coordinate is not 0.', function(done){
+            var spy = sinon.spy();
             testBlock.scrollTop = 2500;
             window.testScope.scroll2Top(testBlock, 1000, spy);
-            expect(callCount > 1).to.equal(true);
+            setTimeout(function(){
+                expect(spy.callCount > 1).to.equal(true);
+                done();
+            }, 1800);
         });
     });
 });
