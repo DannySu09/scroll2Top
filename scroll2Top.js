@@ -23,7 +23,7 @@
             return 0;
         } else {
             component.scrollTo ? component.scrollTo(0, nextStep) : component.scrollTop = nextStep;
-            return nextStep;
+            return Math.round(nextStep);
         }
     };
 
@@ -42,7 +42,7 @@
         var DEFAULT_TIME = 1000;
         if(component == null) {
             console.error('You must assign a dom node object or window object as the first param.');
-            return;
+            return 'error';
         }
         if(time == null) {
             time = DEFAULT_TIME;
